@@ -1,0 +1,41 @@
+<div id="dreams-list"></div>
+
+<div id="dream-form">
+  <label> Dream
+    <input type="text" id="dream-text-field"></input>
+  </label>
+  <label> Theme
+    <input type="text" id="dream-theme-field"></label>
+  </label>
+
+  <button id="submit-dream">Moa Dreams!</button>
+  <button id="refresh-dreams">Dream Refresh</button>
+</div>
+
+
+<script type="text/javascript">
+  $(function() {
+    var dreamListEl = $("#dreams-list");
+    var dreamView = new Dreams.DreamIndexView(dreamListEl);
+
+    var dreamTextFieldEl = $("#dream-text-field");
+    var dreamThemeFieldEl = $("#dream-theme-field");
+    var submitButtonEl = $("#submit-dream");
+    var refreshButtonEl = $("#refresh-dreams");
+    var dreamFormView = new Dreams.DreamFormView(
+      dreamTextFieldEl,
+      dreamThemeFieldEl,
+      submitButtonEl,
+      refreshButtonEl,
+      function(newDream) {
+        newDream.save();
+      }
+    )
+
+
+    dreamFormView.bind();
+    var temp = Dreams.Dream.fetchAll();
+    console.log(temp);
+
+  });
+</script>
