@@ -1,5 +1,9 @@
+// REV: I think you forgot the very first opening parenthesis [ var Dreams = (function (){adslfjalsdjflkasjdf})(); ]
+// REV: I guess it could just work like this? JS intricacies.
+
 var Dreams = function(){
 
+  // REV: What is this madness
   var cache = [];
 
   function Dream(id, text, newTheme) {
@@ -26,6 +30,7 @@ var Dreams = function(){
             } );
   }
 
+  // REV: Was I the only one confused by these random assignments in the middle of the page?
   Dream.all = [];
   Dream.callbacks = [];
   Theme.all = [];
@@ -41,6 +46,7 @@ var Dreams = function(){
           Dream.all.push(new Dream( data[0][i].id, data[0][i].text))
         }
 
+        // Noooo
         cache.push(Dream.all);
 
         for(var i = 0; i < data[1].length; i++){
@@ -153,6 +159,7 @@ var Dreams = function(){
       that.$submitButton.attr("disabled", false);
     }
 
+// REV: I guess throwing in the refresh button with the DFV is one way to save a few lines of code...
     that.refreshClickHandler = function () {
       that.refresh();
     }
@@ -198,3 +205,5 @@ var Dreams = function(){
     cache: cache
   };
 }();
+
+// REV: Looks good. I had an epiphany regarding JS just minutes before starting this, and everything makes sense.
